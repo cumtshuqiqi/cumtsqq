@@ -5,6 +5,7 @@ import java.util.List;
 import org.fkit.domain.Cart;
 import org.fkit.domain.Good;
 import org.fkit.domain.Order;
+import org.fkit.mapper.GoodMapper;
 import org.fkit.mapper.OrderMapper;
 import org.fkit.service.CartService;
 import org.fkit.service.GoodService;
@@ -24,7 +25,8 @@ public class OrderServiceImpl implements OrderService{
 	private CartService cartservice;
 	@Autowired
 	private GoodService goodservice;
-	
+	@Autowired
+	private GoodMapper goodMapper;
 	
 	@Override
 	public List<Order> getAll() {
@@ -35,7 +37,7 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public Order findOrder(int good_id) {
 		// TODO Auto-generated method stub
-		return OrderMapper.findWithId(good_id);
+		return OrderMapper.findorder(good_id);
 	}
 	
 	@Override
@@ -49,10 +51,12 @@ public class OrderServiceImpl implements OrderService{
 		//销售
 		int h=order.getGood_sale();
 		order.setGood_sale(h + i);
-		
 		Good good=goodservice.findWithId(good_id);
 		int j=good.getGood_count();
-		good.setGood_count(j-i);
+		good.setGood_count(j-h);
+		good.setGood_sale(h+i);
+		good.setGood_id(good_id);
+		goodMapper.updatecount(good);
 		int d=good.getGood_price();
 		order.setMoney(d*i);
 		//库存
@@ -67,7 +71,7 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public Order removeOrder(int good_id) {
 		// TODO Auto-generated method stub
-		Order order = OrderMapper.findWithId(good_id);
+		Order order = OrderMapper.findorder(good_id);
 		
 		OrderMapper.removeOrder(order);
 		return order;
@@ -76,7 +80,7 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public Order putOrder(int good_id) {
 		// TODO Auto-generated method stub
-		Order order=OrderMapper.findWithId(good_id);
+		Order order=OrderMapper.findorder(good_id);
 
 		String good_info=new String();
 		good_info="已发货";
@@ -90,7 +94,7 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public Order getOrder(int good_id) {
 		// TODO Auto-generated method stub
-		Order order=OrderMapper.findWithId(good_id);
+		Order order=OrderMapper.findorder(good_id);
 		String good_info=order.getGood_info();
 		String c=new String("已发货");
 		if(c.equals(good_info)){		
@@ -103,22 +107,16 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public Order comment(int good_id) {
+	public Order comment(int good_id, String logistics, String server, String quality) {
 		// TODO Auto-generated method stub
-		Order order=OrderMapper.findWithId(good_id);
-		String description=new String();
-		description="$_POST['description']";
-		order.setDescription(description);
-		
-		String logistics=new String();
-		logistics="$_POST['logistics']";
+		OrderMapper.findorder(good_id);
+		Order order=new Order();
+		order.setGood_id(good_id);
 		order.setLogistics(logistics);
-		
-		String service=new String();
-		service="$_POST['service']";
-		order.setService(service);
-		
+		order.setQuality(quality);
+		order.setServer(server);
 		OrderMapper.comment(order);
+		
 		return order;
 	}
 

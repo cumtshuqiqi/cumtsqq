@@ -30,7 +30,7 @@ public interface OrderMapper {
 	@Results({ @Result(id = true, column = "id", property = "id"),
 		@Result(column = "good_id", property = "good", many = @Many(select = "org.fkit.mapper.GoodMapper.selectByGood_id", fetchType = FetchType.LAZY)),				
 		 @Result(column = "good_id", property = "good_id") })
-	Order findWithId(@Param("good_id") int good_id);
+	Order findorder(@Param("good_id") int good_id);
     //增加购物车订单数量
 	@Update("update tb_order set good_count=good_count+1 where good_id=#{good_id}")
 	void addOrder(Order order);
@@ -44,6 +44,7 @@ public interface OrderMapper {
     @Update("update tb_order set good_info=#{good_info} where good_id=#{good_id}")
 	void getOrder(Order order);
     
-    @Update("update tb_order set description=#{description},logistics=#{logistics},service=#{service} where good_id=#{good_id}")
+    @Update("update tb_order set logistics=#{logistics},server=#{server},quality=#{quality} where good_id=#{good_id}")
     void comment(Order order);
-}
+
+}  

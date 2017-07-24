@@ -112,7 +112,7 @@
                   <td>${good.good_intro}</td>
                   <td></td>
                 <tr>
-                  <td><input class="goodaddinput" type="text" value="${good.good_name }" name="good_name"></td>
+                  <td><input class="goodaddinput" type="text"  name="good_name"></td>
                   <td><input class="goodaddinput" type="text" name="good_image"></td>
                   <td><input class="goodaddinput" type="text" name="good_shoper"></td>
                   <td><input class="goodaddinput" type="text" name="good_type"></td>

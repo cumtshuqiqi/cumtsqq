@@ -99,21 +99,25 @@
                 <td class="pants">价格</td> 
                 <td class="pants">数量</td>
                 <td class="pants">介绍</td>
+                <!-- 
                 <td class="pants">加入购物车</td>
                 <td class="pants">收藏</td>
-                <td class="pants">立即购买</td>
+                 -->
+                <td class="pants">查看详情</td>
             
             <c:forEach items="${requestScope.skirt_list}" var="good">      
             <tr>
-                <td><a href="detail"><img src="img/${good.good_image}"></a></td>
+                <td><a href="detail"><img src="img/${good.good_image}" class="img"></a></td>
                 <td>${good.good_id   }</td>
                 <td>${good.good_name}</td> 
                 <td>${good.good_intro}</td>
                 <td><font color="red">￥${good.good_price}</font></td>
                 <td>${good.good_count}</td>
+                <!-- 
                 <td><a class="btn btn-primary" href="save?good_id=${good.good_id}" role="button" >加入购物车</a></td>
                 <td><a class="btn btn-info" href="savecollect?good_id=${good.good_id}" role="button">收藏</a></td> 
-                <td><a class="btn btn-danger" href="detail?good_id=${good.good_id}" role="button">立即购买</a></td> 
+                 -->
+                 <td><a class="btn btn-primary" href="detail?good_id=${good.good_id}" role="button">商品详情</a></td> 
             </tr>
             </c:forEach>
         </table>

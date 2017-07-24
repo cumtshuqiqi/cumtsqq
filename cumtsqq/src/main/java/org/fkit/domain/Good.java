@@ -19,6 +19,7 @@ public class Good implements Serializable {
 	private Integer  good_sale;
 	private Integer good_price;		// 商品价格
 	private String good_intro;		// 商品介绍	
+	
 	private List<Good> good;
 	
 	public List<Good> getGood() {
@@ -105,6 +106,8 @@ public class Good implements Serializable {
 	public void setGood_image2(String good_image2) {
 		this.good_image2 = good_image2;
 	}
+	
+	
 
 	
 }

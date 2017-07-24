@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
-import org.fkit.domain.Good;
 import org.fkit.domain.Order;
-import org.fkit.service.GoodService;
 import org.fkit.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,6 +28,19 @@ public class OrderController {
 
 	@RequestMapping(value = "/order")
 	public String order(Model model) {
+		
+		// 获得所有商品集合
+		List<Order> order_list = OrderService.getAll();
+		// 将商品集合添加到model当中
+		
+		model.addAttribute("order_list", order_list);
+		// 跳转到order页面
+		return "order";
+	
+	}
+	
+	@RequestMapping(value = "/xingxing")
+	public String xingxing(Model model) {
 		
 		// 获得所有商品集合
 		List<Order> order_list = OrderService.getAll();
@@ -100,9 +111,9 @@ public class OrderController {
 		int good_id_ = Integer.parseInt(good_id);
 		OrderService.putOrder(good_id_);
 		List<Order> order_list = OrderService.getAll();
-		// 将图书集合添加到model当中
+		// 将商品集合添加到model当中
 		model.addAttribute("order_list", order_list);
-		// 跳转到collect页面
+		// 跳转到goodorder页面
 		return "goodorder";
 	}
 	
@@ -112,9 +123,9 @@ public class OrderController {
 		int good_id_ = Integer.parseInt(good_id);
 		OrderService.getOrder(good_id_);
 		List<Order> order_list = OrderService.getAll();
-		// 将图书集合添加到model当中
+		// 将商品集合添加到model当中
 		model.addAttribute("order_list", order_list);
-		// 跳转到collect页面
+		// 跳转到order页面
 		return "order";
 	}
 		
@@ -124,21 +135,26 @@ public class OrderController {
 			int good_id_ = Integer.parseInt(good_id);
 			OrderService.removeOrder(good_id_);
 			List<Order> order_list = OrderService.getAll();
-			// 将图书集合添加到model当中
+			// 将商品集合添加到model当中
 			model.addAttribute("order_list", order_list);
 			// 跳转到collect页面
 			return "order";
 		}
+		
 		@RequestMapping(value="/comment",method = RequestMethod.POST)
 		
-		public String comment(Model model,HttpServletRequest request){
+		public String comment(Model model,HttpServletRequest request, Object order){
 			String good_id = request.getParameter("good_id");
 			int good_id_ = Integer.parseInt(good_id);
-			OrderService.comment(good_id_);
+			
+			String logistics=request.getParameter("logistics");
+			String server=request.getParameter("server");
+			String quality=request.getParameter("quality");
+			OrderService.comment(good_id_,logistics,server,quality);
 			List<Order> order_list = OrderService.getAll();
-			// 将图书集合添加到model当中
+			// 将商品集合添加到model当中
 			model.addAttribute("order_list", order_list);
-			// 跳转到collect页面
-			return "order";
+			// 跳转到order页面
+			return "xingxing";
 		}
 }

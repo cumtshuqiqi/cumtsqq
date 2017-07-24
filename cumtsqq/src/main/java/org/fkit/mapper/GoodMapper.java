@@ -67,4 +67,7 @@ public interface GoodMapper {
 	
 	@Update("update tb_good set good_name=#{good_name},good_image=#{good_image},good_shoper=#{good_shoper},good_type=#{good_type},good_count=#{good_count},good_sale=#{good_sale},good_price=#{good_price},good_intro=#{good_intro} where good_id=#{good_id}")
 	void goodupdate(Good good);
+	//更改库存数量
+	@Update("update tb_good set good_count=#{good_count},good_sale=#{good_sale} where good_id=#{good_id}")
+	void updatecount(Good good);
 }

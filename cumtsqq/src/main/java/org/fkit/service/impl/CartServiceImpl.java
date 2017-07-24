@@ -64,17 +64,22 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public void clearCart() {
-		// TODO Auto-generated method stub
-		CartMapper.clearCart();
-	}
-
-	@Override
 	public Cart removeCart(int good_id) {
 		// TODO Auto-generated method stub
 		Cart cart = CartMapper.findWithId(good_id);
 		CartMapper.removeCart(cart);
 		return cart;
+	}
+
+	@Override
+	public Cart getCart(int good_id,int good_count) {
+		// TODO Auto-generated method stub
+		Cart cart=new Cart();
+		CartMapper.findWithId(good_id);
+		cart.setGood_count(good_count);
+		cart.setGood_id(good_id);
+		CartMapper.get(cart);
+		return null;
 	}
 
 }

@@ -166,17 +166,7 @@ public class GoodController {
 				mv.setViewName("goodupdate");
 				
 				return mv;}
-		
-//		@RequestMapping(value = "/goodupdate",method = RequestMethod.POST)
-//		public String goodupdate(Model model, HttpServletRequest request, String good_name, String good_image, String good_shoper, String good_type, String good_intro, Integer good_price, Integer good_count, Integer good_sale) {
-//			String good_id=request.getParameter("good_id");
-//			Integer good_id_=Integer.parseInt(good_id);
-//			GoodService.findWithId(good_id_);              
-//			GoodService.goodupdate(good_id_, good_name, good_image, good_shoper, good_type, good_count,good_sale, good_price, good_intro);
-//			List<Good> good_list=GoodService.getAll();
-//			model.addAttribute("good_list",good_list);
-//			return "good";
-//			}
+
 	    
 		//下架
 		@RequestMapping(value="/removegood")
@@ -198,9 +188,9 @@ public class GoodController {
 			int id = Integer.parseInt(good_id);
 			Good good=GoodService.findWithId(id);
 			model.addAttribute("good", good);
-			model.addAttribute("good_img", good.getGood_image());
-			model.addAttribute("image1", good.getGood_image1());
-			model.addAttribute("image2", good.getGood_image2());
+			model.addAttribute("good_image", good.getGood_image());
+			model.addAttribute("good_image1", good.getGood_image1());
+			model.addAttribute("good_image2", good.getGood_image2());
 			model.addAttribute("good_intro", good.getGood_intro());
 			model.addAttribute("good_price", good.getGood_price());
 			model.addAttribute("good_type", good.getGood_type());

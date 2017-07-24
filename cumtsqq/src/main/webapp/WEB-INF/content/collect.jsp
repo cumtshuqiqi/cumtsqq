@@ -105,7 +105,7 @@
             <c:forEach items="${requestScope.collect_list}" var="cart">   
             <c:forEach items="${cart.good }" var="good">   
             <tr>
-                <td><img src="img/${good.good_image}"></td>
+                <td><img src="img/${good.good_image}" class="img"></td>
                 <td>${good.good_id}</td>
                 <td>${good.good_name}</td> 
                 <td><font color="red">￥${good.good_price}</font></td>

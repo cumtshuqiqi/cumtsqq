@@ -23,8 +23,6 @@ public class UserServiceImpl implements UserService {
 	 * */
 	@Autowired
 	private UserMapper userMapper;
-	private String newpassword;
-
 	/**
 	 * UserService接口login方法实现
 	 * @see { UserService }
@@ -59,7 +57,7 @@ public class UserServiceImpl implements UserService {
 		User user=userMapper.findByUser_Id(user_id);
 		user.setUser_id(user_id);
 		user.setPassword(password);
-		 userMapper.update(password);
+		userMapper.update(user);
 	}
 
 	@Override

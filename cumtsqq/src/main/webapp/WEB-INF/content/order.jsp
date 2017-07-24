@@ -99,6 +99,7 @@
                 <td class="pants">商品类型</td>
                 <td class="pants">商品价格</td>
                 <td class="pants">购买数量</td>
+                <td class="pants">金额</td>
                 <td class="pants">物流信息</td>
                 <td class="pants">确认收货</td>
                 <td class="pants">评论</td>
@@ -107,9 +108,9 @@
             <c:forEach items="${order.good }" var="good">     
             <tr>
                 
-                <td>${good.good_id}</td>
+                <td>${order.good_id}</td>
                 <td>${good.good_name}</td>
-                <td><img src="img/${good.good_image}"></td>
+                <td><img src="img/${good.good_image}" class="img"></td>
                 <td>${good.good_type}</td>
                 <td><font color="red">￥${good.good_price}</font></td>
                 <td>${order.good_count}</td> 

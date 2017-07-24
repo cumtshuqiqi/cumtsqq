@@ -11,5 +11,5 @@ public interface CartService {
 	Cart addCart(int good_id);
 	Cart reduceCart(int good_id);
 	Cart removeCart(int good_id);
-	void clearCart();
+	Cart getCart(int good_id,int good_count);
 }

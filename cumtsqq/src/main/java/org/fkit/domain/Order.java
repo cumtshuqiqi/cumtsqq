@@ -18,9 +18,9 @@ public class Order {
 	private int good_sale;
 	private int user_id;
 	private String good_info;
-	private String description;
+	private String server;
+	private String quality;
 	private String logistics;
-	private String service;
 	private int money;
 	
 	
@@ -71,17 +71,10 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [id=" + order_id + ", good=" + good + ", good_count=" + good_count + ", good_id=" + good_id + ", user_id="
-				+ user_id + ",good_info="+good_info+",description="+description+",logistics="+logistics+",service="+service+""
+				+ user_id + ",good_info="+good_info+",server="+server+",logistics="+logistics+",quality="+quality+""
 						+ ",money="+money+",good_sale="+good_sale+"]";
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public String getLogistics() {
 		return logistics;
@@ -89,14 +82,6 @@ public class Order {
 
 	public void setLogistics(String logistics) {
 		this.logistics = logistics;
-	}
-
-	public String getService() {
-		return service;
-	}
-
-	public void setService(String service) {
-		this.service = service;
 	}
 
 	public int getMoney() {
@@ -113,5 +98,21 @@ public class Order {
 
 	public void setGood_sale(int good_sale) {
 		this.good_sale = good_sale;
+	}
+
+	public String getServer() {
+		return server;
+	}
+
+	public void setServer(String server) {
+		this.server = server;
+	}
+
+	public String getQuality() {
+		return quality;
+	}
+
+	public void setQuality(String quality) {
+		this.quality = quality;
 	}
 }

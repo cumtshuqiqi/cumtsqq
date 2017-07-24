@@ -11,5 +11,5 @@ public interface OrderService {
 	Order findOrder(int good_id_);
 	Order putOrder(int good_id_);
 	Order getOrder(int good_id);
-	Order comment(int good_id_);
+	Order comment(int good_id, String logistics, String server, String quality);
 }

@@ -113,7 +113,7 @@
                 <td>${good.good_intro}</td>
                 <td><a class="btn btn-primary" href="save?good_id=${good.good_id}" role="button" >加入购物车</a></td>
                 <td><a class="btn btn-info" href="savecollect?good_id=${good.good_id}" role="button">收藏</a></td> 
-                <td><a class="btn btn-danger" href="intoorder?good_id=${good.good_id}" role="button">立即购买</a></td> 
+                <td><a class="btn btn-danger" href="saveorder?good_id=${good.good_id}" role="button">立即购买</a></td> 
             </tr>
             </c:forEach>
         </table>

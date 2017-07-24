@@ -94,25 +94,27 @@
  		<table class="table table-hover" >
                 
                 <td width="200px">图片</td>
-                <td class="coat">编号</td>
-                <td class="coat">名称</td>
-                <td class="coat">价格</td> 
-                <td class="coat">数量</td>
-                <td class="coat">添加</td>
-                <td class="coat">减少</td>
-                <td class="coat">删除</td>
-                <td class="coat">立即购买</td>
+                <td class="pants">编号</td>
+                <td class="pants">名称</td>
+                <td class="pants">价格</td> 
+                <td class="pants">添加</td>
+                <td class="pants">数量</td>
+                <td class="pants">减少</td>
+                <td class="pants">确定</td>
+                <td class="pants">删除</td>
+                <td class="pants">立即购买</td>
             
             <c:forEach items="${requestScope.cart_list}" var="cart">   
             <c:forEach items="${cart.good }" var="good">    
             <tr>
-                <td><img src="img/${good.good_image}"></td>
+                <td><img src="img/${good.good_image}" class="img"></td>
                 <td>${good.good_type}</td>
                 <td>${good.good_name}</td>
                 <td><font color="red">￥${good.good_price}</font></td>
-                <td>${cart.good_count}</td>
-                <td><a class="btn btn-info" href="add?good_id=${good.good_id}" role="button">添加</a></td> 
+                <td><a class="btn btn-info" href="add?good_id=${good.good_id}" role="button">添加</a></td>
+                <td> <input type="text"  class="form-control" id="good_count" placeholder="${cart.good_count}" ></td> 
                 <td><a class="btn btn-info" href="reduce?good_id=${good.good_id}" role="button">减少</a></td> 
+                <td><a class="btn btn-info" href="get?good_id=${good.good_id}" role="button">确定</a></td> 
                 <td><a class="btn btn-danger" href="remove?good_id=${good.good_id}" role="button">删除</a></td> 
                 <td><a class="btn btn-success" href="saveorder?good_id=${good.good_id}" role="button">立即购买</a></td> 
             </tr>

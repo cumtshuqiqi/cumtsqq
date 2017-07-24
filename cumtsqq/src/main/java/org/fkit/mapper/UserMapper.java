@@ -29,7 +29,6 @@ public interface UserMapper {
 	@Insert("insert into tb_user(user_id,loginname,password,email,phone,address) values(#{user_id},#{loginname},#{password},#{email},#{phone},#{address})")
 	@Options(useGeneratedKeys = true, keyProperty = "user_id")
 	 int saveUser(User user);
-	//根据user_id找user
 	 @Select("select * from tb_user where user_id=#{user_id}")
 		@Results({ @Result( id= true, column = "user_id", property = "user_id"), @Result(column = "loginname", property = "loginname"),
 				@Result(column = "email", property = "email"), @Result(column = "password", property = "password"),
@@ -41,8 +40,8 @@ public interface UserMapper {
 	User find(@Param("loginname") String loginname, @Param("email") String email);
 	//修改密码
 	 @Update("update tb_user set password=#{password} where  user_id=#{user_id}")
-		void update(String password);
-	 //
+		void update(User user);
+		//根据user_id找user
 	 @Select("select * from tb_user where user_id=#{user_id}")
 	 User findByUser_Id(@Param("user_id") Integer user_id);
 

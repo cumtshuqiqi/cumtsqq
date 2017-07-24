@@ -113,7 +113,7 @@ public class GoodServiceImpl implements GoodService{
 		good = goodMapper.findWithId(good_id_);
 		good.setGood_id(good_id_);
 		good.setGood_count(good_count);
-		good.setGood_count(good_sale);
+		good.setGood_sale(good_sale);
 		good.setGood_name(good_name);
 		good.setGood_image(good_image);
 		good.setGood_shoper(good_shoper);

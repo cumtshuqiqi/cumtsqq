@@ -33,15 +33,14 @@ public interface CartMapper {
     //增加购物车商品数量
     @Update("update tb_cart set good_count=good_count+1 where good_id=#{good_id}")
 	void addCart(Cart cart);
-    //清空购物车
-    @Delete("delete from tb_cart ")
-	void clearCart();
     //减少购物车商品数量
     @Update("update tb_cart set good_count=good_count-1 where good_id=#{good_id}")
 	void reduceCart(Cart cart);
     //删除商品
     @Delete("delete from tb_cart where good_id=#{good_id}")
 	void removeCart(Cart cart);
-
+    //获取输入框中的数量
+    @Update("update tb_cart set good_count=#{good_count} where good_id=#{good_id}")
+    void get(Cart cart);
 
 }

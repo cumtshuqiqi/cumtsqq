@@ -112,7 +112,7 @@ public class UserController {
 		
 		public ModelAndView update(Integer user_id,String password,
 				 ModelAndView mv,
-				 HttpSession session,HttpServletRequest request) {
+				 HttpSession session) {
 			User user = userService.findByUser_Id(user_id);
 			if(user != null){
 				// 登录成功，将user对象设置到HttpSession作用范围域
@@ -124,11 +124,10 @@ public class UserController {
 				mv.addObject("message", "登录名或密码错误，请重新输入!");
 				mv.setViewName("login");
 			}
-			
 			return mv;
+			
 		}	
 			@RequestMapping(value="/updatepwd",method = RequestMethod.POST)
-			
 			public String updatepwd(HttpSession session,HttpServletRequest request) {
 				User user=(User) session.getAttribute("user");
 				Integer user_id=user.getUser_id();
